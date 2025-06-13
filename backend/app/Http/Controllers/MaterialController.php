@@ -9,42 +9,30 @@ class MaterialController extends Controller
 {
     public function index(Request $request)
     {
-        $search = $request->query('search');
-        $query = Material::query();
-        if ($search) {
-            $query->where('nome', 'like', "%{$search}%")
-                  ->orWhere('barcode', 'like', "%{$search}%")
-                  ->orWhere('id', 'like', "%{$search}%")
-                  ->orWhere('descricao', 'like', "%{$search}%");
-        }
-        return $query->paginate(20);
+        return Material::paginate(20);
     }
 
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'nome' => 'required',
-            'barcode' => 'nullable|unique:materiais,barcode',
-            'descricao' => 'nullable'
-        ]);
-        $material = Material::create($data);
-        return response()->json($material, 201);
+        $data = $request->all();
+        $model = Material::create($data);
+        return response()->json($model, 201);
     }
 
-    public function show(Material $material)
+    public function show(Material $model)
     {
-        return $material;
+        return $model;
     }
 
-    public function update(Request $request, Material $material)
+    public function update(Request $request, Material $model)
     {
-        $material->update($request->all());
-        return $material;
+        $model->update($request->all());
+        return $model;
     }
 
-    public function destroy(Material $material)
+    public function destroy(Material $model)
     {
-        $material->delete();
+        $model->delete();
         return response()->noContent();
     }
 }

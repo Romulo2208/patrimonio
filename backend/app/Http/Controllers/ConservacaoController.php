@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fornecedor;
+use App\Models\Conservacao;
 use Illuminate\Http\Request;
 
-class FornecedorController extends Controller
+class ConservacaoController extends Controller
 {
     public function index(Request $request)
     {
-        return Fornecedor::paginate(20);
+        return Conservacao::paginate(20);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        $model = Fornecedor::create($data);
+        $model = Conservacao::create($data);
         return response()->json($model, 201);
     }
 
-    public function show(Fornecedor $model)
+    public function show(Conservacao $model)
     {
         return $model;
     }
 
-    public function update(Request $request, Fornecedor $model)
+    public function update(Request $request, Conservacao $model)
     {
         $model->update($request->all());
         return $model;
     }
 
-    public function destroy(Fornecedor $model)
+    public function destroy(Conservacao $model)
     {
         $model->delete();
         return response()->noContent();

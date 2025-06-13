@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fornecedor;
+use App\Models\PatrimonioItem;
 use Illuminate\Http\Request;
 
-class FornecedorController extends Controller
+class PatrimonioItemController extends Controller
 {
     public function index(Request $request)
     {
-        return Fornecedor::paginate(20);
+        return PatrimonioItem::paginate(20);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        $model = Fornecedor::create($data);
+        $model = PatrimonioItem::create($data);
         return response()->json($model, 201);
     }
 
-    public function show(Fornecedor $model)
+    public function show(PatrimonioItem $model)
     {
         return $model;
     }
 
-    public function update(Request $request, Fornecedor $model)
+    public function update(Request $request, PatrimonioItem $model)
     {
         $model->update($request->all());
         return $model;
     }
 
-    public function destroy(Fornecedor $model)
+    public function destroy(PatrimonioItem $model)
     {
         $model->delete();
         return response()->noContent();

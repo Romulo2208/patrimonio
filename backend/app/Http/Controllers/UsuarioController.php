@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fornecedor;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
-class FornecedorController extends Controller
+class UsuarioController extends Controller
 {
     public function index(Request $request)
     {
-        return Fornecedor::paginate(20);
+        return Usuario::paginate(20);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        $model = Fornecedor::create($data);
+        $model = Usuario::create($data);
         return response()->json($model, 201);
     }
 
-    public function show(Fornecedor $model)
+    public function show(Usuario $model)
     {
         return $model;
     }
 
-    public function update(Request $request, Fornecedor $model)
+    public function update(Request $request, Usuario $model)
     {
         $model->update($request->all());
         return $model;
     }
 
-    public function destroy(Fornecedor $model)
+    public function destroy(Usuario $model)
     {
         $model->delete();
         return response()->noContent();

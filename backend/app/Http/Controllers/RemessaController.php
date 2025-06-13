@@ -2,35 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Fornecedor;
+use App\Models\Remessa;
 use Illuminate\Http\Request;
 
-class FornecedorController extends Controller
+class RemessaController extends Controller
 {
     public function index(Request $request)
     {
-        return Fornecedor::paginate(20);
+        return Remessa::paginate(20);
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        $model = Fornecedor::create($data);
+        $model = Remessa::create($data);
         return response()->json($model, 201);
     }
 
-    public function show(Fornecedor $model)
+    public function show(Remessa $model)
     {
         return $model;
     }
 
-    public function update(Request $request, Fornecedor $model)
+    public function update(Request $request, Remessa $model)
     {
         $model->update($request->all());
         return $model;
     }
 
-    public function destroy(Fornecedor $model)
+    public function destroy(Remessa $model)
     {
         $model->delete();
         return response()->noContent();
