@@ -1,0 +1,9 @@
+{
+    "config": {
+        "vendor-dir": "Vendor"
+    },
+    "require": {
+        "mpdf/mpdf": "^7.0",
+        "phpoffice/phpword": "^0.18.2"
+    }
+}

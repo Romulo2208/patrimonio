@@ -1,0 +1,105 @@
+<div class="page-header position-relative">
+    <h1>
+        <?php echo __('Materiais'); ?> <small> <i class="icon-double-angle-right"></i> <?php echo __('Protocolos'); ?>        </small>
+    </h1>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="tabbable">
+            <?php //if(!in_array($this->Session->read('Perfil.id'), array('3'))) { ?>
+              <ul class="nav nav-tabs" id="myTab">
+                  <li> <?php echo $this->Html->link(__('<i class="blue icon-folder-open bigger-110"></i> Produto'), array('controller' => 'materiais', 'action' => 'index'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li> <?php echo $this->Html->link(__("<i class='green icon-cloud-upload bigger-110'></i> Entrada <span class='badge badge-important'></span>"), array('controller' => 'materiais', 'action' => 'entrada'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li> <?php echo $this->Html->link(__("<i class='red icon-cloud-download bigger-110'></i> Saida <span class='badge badge-important'></span>"), array('controller' => 'materiais', 'action' => 'saida'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li> <?php echo $this->Html->link(__("<i class='orange icon-list bigger-110'></i> Pedidos <span class='badge badge-important'></span>"), array('controller' => 'pedidos', 'action' => 'index'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li> <?php echo $this->Html->link(__("<i class='purple icon-credit-card bigger-110'></i> Requisi&ccedil;&atilde;o de Compras <span class='badge badge-important'></span>"),  array('controller' => 'compras', 'action' => 'index'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li> <?php echo $this->Html->link(__("<i class='orange icon-briefcase bigger-110'></i> Or&ccedil;amentos <span class='badge badge-important'></span>"), array('controller' => 'orcamentos', 'action' => 'index'), array('class' => '', 'escape' => false)); ?> </li>
+                  <li class="active"> <?php echo $this->Html->link(__("<i class='black icon-book bigger-110'></i> Protocolos <span class='badge badge-important'></span>"),  array('controller' => 'remessas', 'action' => 'protocolos'), array('class' => '', 'escape' => false)); ?> </li>
+              </ul>
+            <?php //} ?>
+
+            <div class="tab-content">
+              <div id="item" class="tab-pane in active">
+                   <p>
+                    <button type="button" id="btnSearch" class="btn btn-small" value="Pesquisar" style="float: right;"><span class='icon-search'></span></button>
+                    <input type="text" id="idSearch" placeholder="Numero do Protocolo" style="width: 200px; float: right;"/>
+                </p>
+                  <!-- <p>
+                      <a href="<?php //echo $this->Html->url(array('action' => 'add'), true); ?>" class="btn btn-small btn-inverse icon-edit popup"  data-rel="doc"> Nova Requisi&ccedil;&atilde;o</a>
+                  </p> -->
+                  <hr />
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                              <th style="width: 150px;">Data e Hora</th>
+                              <th style="width: 50px;">Protocolo</th>
+                              <th style="width: 250px;">Observacao</th>
+                              <th style="width: 50px;">Situa&ccedil;&atilde;o</th>
+                              <th style="width: 150px;"></th>
+                              <th style="width: 150px;"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <?php foreach ($remessas as $remessa) { ?>
+                            <tr>
+                                <td><?php echo date('d/m/Y H:i', strtotime($remessa['Remessa']['data_hora_registro'])); ?></td>
+                                <td><?php echo $remessa['Remessa']['id']; ?></td>
+                                <td style="text-align: center;"><?php echo ($remessa['Remessa']['observacao'])?></td>
+                                <td style="text-align: center;"><?php if(empty($remessa['Remessa']['situacao_protocolo']) || $remessa['Remessa']['situacao_protocolo'] == 1){ echo "<span class='icon-edit gray bigger-160' title='Pendente'></span>";}
+                                elseif ($remessa['Remessa']['situacao_protocolo'] == 2) { echo "<span class='icon-edit green bigger-160' title='Aprovado'></span>";}
+                                else { echo "<span class='icon-edit orange bigger-160' title='Atendido Parcialmente'></span>";}?></td>
+                                <td style="text-align: center;">
+                                  <a href="<?php echo $this->Html->url(array('action' => 'situacao_protocolo', $remessa['Remessa']['id']), true); ?>" class="btn btn-mini btn-info popup" data-rel="doc"><i class="icon-edit bigger-110"></i> Editar situacao</a>
+                                  <?php  if($remessa['Remessa']['pdf'] == 1) { ?>
+                                  <a href="../../webroot/img/uploads/<?php echo $remessa['Remessa']['id']; ?>.pdf" class="btn btn-mini btn-danger icon-file" data-rel="doc" target="blank"> PDF</a>
+                                <?php } ?>
+                                </td>
+                                <td style="text-align: center;">
+                                  <a href="<?php echo $this->Html->url(array('action' => 'abrir', $remessa['Remessa']['id']), true); ?>" class="btn btn-mini btn-info popup" data-rel="doc"><i class="icon-edit bigger-110"></i> Abrir</a>
+                                  <!-- <a href="<?php //echo $this->Html->url(array('action' => 'imprimir', $orcamento['Orcamento']['id']), true); ?>" class="btn btn-mini btn-info" data-rel="doc" target="blank"><i class="icon-file bigger-110"></i> Imprimir</a> -->
+                                  <a href="<?php echo $this->Html->url(array('action' => 'separar', $remessa['Remessa']['id']), true); ?>" class="btn btn-mini btn-info popup" data-rel="doc"><i class="icon-edit bigger-110"></i> Entrada</a>
+                                  <a href="<?php echo $this->Html->url(array('action' => 'visualizar', $remessa['Remessa']['id']), true); ?>" class="btn btn-mini btn-info" data-rel="doc" target="blank"><i class="icon-file bigger-110"></i> Abrir Protocolo</a>
+                                  <a href="<?php echo $this->Html->url(array('action' => 'imprimir', $remessa['Remessa']['id']), true); ?>" class="btn btn-mini btn-info" data-rel="doc" target="blank"><i class="icon-file bigger-110"></i> Imprimir</a>
+                                </td>
+                            </tr>
+                          <?php } ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <td colspan="10">
+                                  <?php echo $this->element('paginacao'); ?>
+                              </td>
+                          </tr>
+                      </tfoot>
+
+                  </table>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+      $('a.popup').colorbox({
+          onLoad: function () {
+              $('#cboxClose, #cboxTitle, #cboxCurrent, #cboxNext, #cboxPrevious').remove();
+          }
+      });
+
+     jQuery('#btnSearch').click(function() {
+        var url = '<?php echo $this->Html->url(array('controller' => 'remessas'), true); ?>/';
+        url += jQuery('#idSearch').val();
+        location.href = url;
+      });
+
+    $(document).keypress(function(e) {
+        if (e.which == 13) {
+          var url = '<?php echo $this->Html->url(array('controller' => 'remessas'), true); ?>/';
+          url += jQuery('#idSearch').val();
+          location.href = url;
+        }
+      });
+    });
+</script>

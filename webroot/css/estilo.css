@@ -1,0 +1,113 @@
+div.container {
+        border: 2px solid #000;
+        height: 100%;
+        /* background: -webkit-linear-gradient(top, #088fad 20%, #00d5ff 100%); */
+    }
+
+
+    div.op1 {
+        width: 50%;
+        height: 100%;
+        float: left;
+        /* background-color: red; */
+    }
+
+    div.op2 {
+        width: 50%;
+        height: 100%;
+        float: right;
+        /* background-color: green; */
+
+    }
+    div.inicial {
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        /* border: 2px solid #000; */
+        width: 100%;
+        height: 19.2%;
+
+    }
+
+    div.inicialE {
+        /* border: 2px solid #000; */
+        border-bottom: 2px solid #000;
+        width: 100%;
+        height: 17%;
+
+    }
+
+    div.ladoE {
+        width: 50%;
+        height: 19%;
+        float: right;
+        /* background-color: green; */
+
+    }
+    div.ladoE2 {
+        width: 50%;
+        height: 16%;
+        float: right;
+        /* background-color: green; */
+
+    }
+    div.ladoE2 {
+        /* border: 1px solid #000; */
+        border-left: 1px solid #000;
+        border-bottom: 1px solid #000;
+        width: 48%;
+        height: 10%;
+        float: right;
+        /* background-color: green; */
+
+    }
+
+    div.fornecedor {
+        border-right: 2px solid #000;
+        border-bottom: 2px solid #000;
+        /* border: 2px solid #000; */
+        width: 100%;
+        height: 14%;
+
+    }
+
+    div.especi {
+        /* border-right: 2px solid #000; */
+        border-bottom: 2px solid #000;
+        /* border: 2px solid #000; */
+        width: 100%;
+        height: 14%;
+
+    }
+
+    div.tabelaD {
+        border-right: 2px solid #000;
+        /* border-bottom: 2px solid #000; */
+        /* border: 2px solid #000; */
+        width: 100%;
+        height: 65%;
+
+    }
+
+    div.filial {
+        width: 100%;
+        height: 8%;
+        /* float: right; */
+        /* background-color: green; */
+
+    }
+
+    div.assinatura {
+        width: 50%;
+        height: 10%;
+        float: left;
+        /* background-color: green; */
+
+    }
+
+    div.executado {
+        width: 50%;
+        height: 10%;
+        float: right;
+        /* background-color: green; */
+
+    }

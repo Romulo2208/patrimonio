@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    ^$    /patrimonio/webroot/    [L]
+    RewriteRule    (.*) /patrimonio/webroot/$1    [L]
+
+#    RewriteCond %{HTTP_HOST} ^patrimonio\/ [NC]
+#    RewriteRule ^ http://%1%{REQUEST_URI} [NE,R=301,L]
+
+</IfModule>

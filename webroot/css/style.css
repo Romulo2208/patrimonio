@@ -1,0 +1,57 @@
+body { font-family:FontAwesome; font-size: 9pt; }
+body.login-layout {background: #999999; padding-top: 10px;}
+body.login-layout .widget-box { background-color: #999999; }
+.toolbar a{ color: #fff; }
+
+.page-header h1 a { float: right; margin-left: 5px; }
+
+/* .container-fluid img.logo { width: 145px; margin: 5px; }
+.container-fluid ul.ace-nav{ margin-top: 15px; }
+.container-fluid ul.ace-nav li.light-blue .dropdown-toggle{ min-width: 200px; }
+.container-fluid ul.ace-nav li.light-blue .user-info{ min-width: 125px;}
+.container-fluid ul.ace-nav li.light-blue i.icon-caret-down{ float: right; margin-top: 13px; } */
+
+
+.pagination ul > li.myclass {
+    float: left;
+    padding: 4px 12px;
+    line-height: 20px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-left-width: 0;
+    color: #999999;
+    cursor: default;
+    background-color: transparent;
+}
+
+.pagination ul > li.myclass:first-child {
+    border-left-width: 1px;
+    -webkit-border-bottom-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -webkit-border-top-left-radius: 4px;
+    border-top-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-topleft: 4px;
+}
+
+.pagination ul > li.myclass:last-child {
+    -webkit-border-top-right-radius: 4px;
+    border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+}
+
+.widget-header {
+    height: 45px;
+}
+
+.widget-body {
+    padding: 15px;
+}
+
+.widget-toolbar .btn-small {
+    padding: 0 10px 0 10px;
+}
